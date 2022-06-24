@@ -1,10 +1,11 @@
 #!/bin/bash
-pkill -f tmux 
-cd MLHFellowshipProject 
+cd MLHFellowshipProject
 echo "fetching and reset orgin"
 git fetch && git reset origin/main --hard
 python -m venv python3-virtualenv
 source python3-virtualenv/bin/activate
 pip install -r requirements.txt
-tmux new -d 
-flask run --host=0.0.0.0
+cd /etc/systemd/system
+systemctl start myportfolio
+systemctl enable myportfolio
+systemctl status myportfolio
